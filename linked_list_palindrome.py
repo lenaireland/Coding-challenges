@@ -57,6 +57,8 @@ def isListPalindrome(l):
         
     current.next = prev
 
+
+    # ANSWER WITHOUT PUTTING LIST BACK IN ORDER
         
     while current is not None and l is not None:
         if l.value != current.value:
@@ -65,3 +67,36 @@ def isListPalindrome(l):
         current = current.next
         
     return True
+
+
+    # ANSWER WITH PUTTING LIST BACK IN ORDER
+
+    # ans = True
+    # prev = None
+    # front = l
+    
+    # while current.next is not None:
+    #     if front.value != current.value:
+    #         ans = False
+        
+    #     front = front.next
+        
+    #     # put list back in order
+    #     ahead = current.next
+    #     current.next = prev
+    #     prev = current
+    #     current = ahead        
+        
+    # current.next = prev
+    
+    # if front.value != current.value:
+    #     ans = False
+    
+    # # checking - comment out when correct
+    # # current = l
+    # # while current.next is not None:
+    # #     print(current.value)
+    # #     current = current.next        
+    # # print(current.value)
+        
+    # return ans
