@@ -43,10 +43,14 @@ def addTwoHugeNumbers(a, b):
     while a is not None or b is not None:
         if a is None:
             num = b.value + rem
+            b = b.next
         elif b is None:
             num = a.value + rem
+            a = a.next
         else:
             num = a.value + b.value + rem
+            a = a.next
+            b = b.next
         
         if num > 9999:
             rem = 1
@@ -55,19 +59,33 @@ def addTwoHugeNumbers(a, b):
             rem = 0
         
         if c is not None:
-            c.next = ListNode(num)
-            c = c.next
+            next = c
+            c = ListNode(num)
+            c.next = next
         else:
-            c_head = ListNode(num)
-            c = c_head
-        
-        if a is not None:
-            a = a.next
-        if b is not None:
-            b = b.next
-
-    if rem > 0:
-        c.next = ListNode(rem)
-        c = c.next
+            c = ListNode(num)
             
-    return reverse(c_head)
+    if rem > 0:
+        next = c
+        c = ListNode(rem)
+        c.next = next
+        
+    return c
+        
+#         if c is not None:
+#             c.next = ListNode(num)
+#             c = c.next
+#         else:
+#             c_head = ListNode(num)
+#             c = c_head
+        
+# #         if a is not None:
+# #             a = a.next
+# #         if b is not None:
+# #             b = b.next
+
+#     if rem > 0:
+#         c.next = ListNode(rem)
+#         c = c.next
+            
+#     return reverse(c_head)
